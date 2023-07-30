@@ -37,17 +37,6 @@ Budget of Movies in Each Genre')
 
 st.pyplot(fig)
 
-col1, col2 = st.columns(2)
-col1.write('# This is Column 1')
-col2.write('# This is Column 2')
-
-st.write('### Columns of different sizes')
-col1, col2, col3, col4 = st.columns([1,3,1,2])
-
-col1.write('# This is Column 1')
-col2.write('# This is Column 2')
-col3.write('# This is Column 3')
-col4.write('# This is Column 4')
 
 # Creating sidebar widget unique values from our movies dataset
 score_rating = movies_data['score'].unique().tolist()
@@ -64,3 +53,23 @@ new_genre_list = st.multiselect('Choose Genre:',genre_list, default = ['Animatio
 #create a selectbox option that holds all unique years
 year = st.selectbox('Choose a Year',year_list, 0)
 
+#Configure and filter the slider widget for interactivity
+score_info = (movies_data['score'].between(*new_score_rating))
+#Filter the selectbox and multiselect widget for interactivity
+new_genre_year = (movies_data['genre'].isin(new_genre_list)) & (movies_data['year'] == year)
+
+# visualization section
+#group the columns needed for visualizations
+col1, col2 = st.columns([2,3])
+with col1:
+    st.write("""#### Lists of movies filtered by year and Genre """)
+    dataframe_genre_year = movies_data[new_genre_year].groupby(['name',  'genre'])['year'].sum()
+    dataframe_genre_year = dataframe_genre_year.reset_index()
+    st.dataframe(dataframe_genre_year, width = 400)
+
+with col2:
+    st.write("""#### User score of movies and their genre """)
+    rating_count_year = movies_data[score_info].groupby('genre')['score'].count()
+    rating_count_year = rating_count_year.reset_index()
+    figpx = px.line(rating_count_year, x = 'genre', y = 'score')
+    st.plotly_chart(figpx)
