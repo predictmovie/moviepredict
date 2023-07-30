@@ -2,4 +2,4 @@ opencv-contrib-python-headless
 tensorflow
 streamlit-cropper
 matplotlib
-plotly.express
+plotly_express
