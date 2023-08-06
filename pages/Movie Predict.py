@@ -41,7 +41,7 @@ if uploaded_file is not None:
     # check for valid frame number
         if myFrameNumber >= 0 & myFrameNumber <= totalFrames:
     # set frame position
-        cap.set(cv2.CAP_PROP_POS_FRAMES,myFrameNumber)
+            cap.set(cv2.CAP_PROP_POS_FRAMES,myFrameNumber)
 
         while True:
             ret, frame = cap.read()
