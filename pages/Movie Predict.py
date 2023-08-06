@@ -32,7 +32,7 @@ if uploaded_file is not None:
     # img_reshape = resized[np.newaxis,...]
     video_pred = st.button("Set Video")  
     if video_pred:
-        cap = cv2.VideoCapture(video_name)
+        cap = cv2.VideoCapture(uploaded_file)
 
 #Set frame_no in range 0.0-1.0
 #In this example we have a video of 30 seconds having 25 frames per seconds, thus we have 750 frames.
