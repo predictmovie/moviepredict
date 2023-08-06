@@ -7,7 +7,8 @@ from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2,preprocess_in
 
 model = tf.keras.models.load_model("saved_model/leaf.hdf5")
 ### load file
-uploaded_file = st.file_uploader("Choose a image file")
+uploaded_file = st.file_uploader("Choose a file")
+
 
 map_dict = {0:'Canker',
             1:'Dot',
@@ -23,7 +24,7 @@ if uploaded_file is not None:
     opencv_image = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2RGB)
     resized = cv2.resize(opencv_image,(224,224))
     # Now do something with the image! For example, let's display it:
-    st.image(opencv_image, channels="RGB")
+    st.video(opencv_image, channels="RGB")
 
     resized = mobilenet_v2_preprocess_input(resized)
     img_reshape = resized[np.newaxis,...]
