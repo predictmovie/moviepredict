@@ -41,8 +41,8 @@ if uploaded_file is not None:
             count += 1
          else:
             break
-        cv2.destroyAllWindows()
-        vidcap.release()
+       cv2.destroyAllWindows()
+       vidcap.release()
 
     Genrate_pred = st.button("Leaf Predict")    
     if Genrate_pred:
