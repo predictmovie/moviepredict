@@ -26,8 +26,23 @@ if uploaded_file is not None:
     # Now do something with the image! For example, let's display it:
     st.video(uploaded_file)
 
+
+
     # resized = mobilenet_v2_preprocess_input(resized)
     # img_reshape = resized[np.newaxis,...]
+    video_pred = st.button("Set Video")  
+    if video_pred:
+    vidcap = cv2.VideoCapture(uploaded_file)
+    count = 0
+    while vidcap.isOpened():
+        success, image = vidcap.read()
+        if success:
+            cv2.imwrite(os.path.join("saved_model", '%d.png') % count, image)
+            count += 1
+        else:
+            break
+    cv2.destroyAllWindows()
+    vidcap.release()
 
     Genrate_pred = st.button("Leaf Predict")    
     if Genrate_pred:
