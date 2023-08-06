@@ -32,17 +32,24 @@ if uploaded_file is not None:
     # img_reshape = resized[np.newaxis,...]
     video_pred = st.button("Set Video")  
     if video_pred:
-       vidcap = cv2.VideoCapture(uploaded_file)
-       count = 0
-       while vidcap.isOpened():
-         success, image = vidcap.read()
-         if success:
-            cv2.imwrite(os.path.join("saved_model", '%d.png') % count, image)
-            count += 1
-         else:
-            break
+       myFrameNumber = 50
+       cap = cv2.VideoCapture("video.mp4")
+
+    # get total number of frames
+       totalFrames = cap.get(cv2.CAP_PROP_FRAME_COUNT)
+
+    # check for valid frame number
+       if myFrameNumber >= 0 & myFrameNumber <= totalFrames:
+    # set frame position
+       cap.set(cv2.CAP_PROP_POS_FRAMES,myFrameNumber)
+
+       while True:
+          ret, frame = cap.read()
+          cv2.imshow("Video", frame)
+          if cv2.waitKey(20) & 0xFF == ord('q'):
+             break
+
        cv2.destroyAllWindows()
-       vidcap.release()
 
     Genrate_pred = st.button("Leaf Predict")    
     if Genrate_pred:
