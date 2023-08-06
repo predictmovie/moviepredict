@@ -32,7 +32,7 @@ if uploaded_file is not None:
     # img_reshape = resized[np.newaxis,...]
     video_pred = st.button("Set Video")  
     if video_pred:
-        cap = cv2.VideoCapture(uploaded_file)
+        cap = cv2.VideoCapture(video_name)
 
 #Set frame_no in range 0.0-1.0
 #In this example we have a video of 30 seconds having 25 frames per seconds, thus we have 750 frames.
@@ -74,9 +74,13 @@ if uploaded_file is not None:
         cv2.destroyAllWindows()
 
 
-    Genrate_pred = st.button("Leaf Predict")    
+    Genrate_pred = st.button("Genere Predict")    
     if Genrate_pred:
+        file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
+        opencv_image = cv2.imdecode(file_bytes, 1)
+        opencv_image = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2RGB)
+        resized = cv2.resize(opencv_image,(224,224))
         prediction = model.predict(img_reshape).argmax()
-        st.title("Predicted Dryness Level for the image is {}".format(map_dict [prediction]))
+        st.title("Predicted Movie genere is {}".format(map_dict [prediction]))
  
            
