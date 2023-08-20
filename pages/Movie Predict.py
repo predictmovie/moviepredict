@@ -81,6 +81,9 @@ if uploaded_file is not None:
         opencv_image = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2RGB)
         resized = cv2.resize(opencv_image,(224,224))
         prediction = model.predict(img_reshape).argmax()
+        st.session_state['year'] = prediction
+        st.session_state['genre'] = 'Action'
+        st.write(st.session_state.year)
         st.title("Predicted Movie genere is {}".format(map_dict [prediction]))
  
            
