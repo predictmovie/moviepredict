@@ -25,7 +25,8 @@ st.set_page_config(
 )
 
 st.write("""Average Movie Budget, Grouped by Genre""")
-st.write(st.session_state)
+st.write(st.session_state.year)
+st.write(st.session_state.genre)
 avg_budget = movies_data.groupby('genre')['budget'].mean().round()
 avg_budget = avg_budget.reset_index()
 genre = avg_budget['genre']
