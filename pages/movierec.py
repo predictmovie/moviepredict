@@ -55,9 +55,9 @@ with st.sidebar:
     new_score_rating = st.slider(label = "Choose a value:",min_value = 1.0,max_value = 10.0,value = (3.0,4.0))
 
 #create a multiselect widget to display genre
-new_genre_list = st.multiselect('Choose Genre:',genre_list, default = ['Animation','Horror',  'Fantasy', 'Romance'])
+new_genre_list = st.multiselect('Choose Genre:',genre_list, default = [])
 #create a selectbox option that holds all unique years
-year = st.selectbox('Choose a Year',year_list, newyear)
+year = st.selectbox('Choose a Year',year_list, 3)
 
 #Configure and filter the slider widget for interactivity
 score_info = (movies_data['score'].between(*new_score_rating))
