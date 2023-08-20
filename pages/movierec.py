@@ -56,7 +56,7 @@ year = st.selectbox('Choose a Year',year_list, 3)
 #Configure and filter the slider widget for interactivity
 score_info = (movies_data['score'].between(*new_score_rating))
 #Filter the selectbox and multiselect widget for interactivity
-new_genre_year = (movies_data['genre'].isin(new_genre_list[3])) & (movies_data['year'] == year)
+new_genre_year = (movies_data['genre'].isin(new_genre_list)) & (movies_data['year'] == year)
 
 # visualization section
 #group the columns needed for visualizations
