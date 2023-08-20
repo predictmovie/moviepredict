@@ -10,26 +10,26 @@ model = tf.keras.models.load_model("saved_model/leaf.hdf5")
 uploaded_file = st.file_uploader("Choose a file")
 
 
-map_dict = {0:'Canker',
-            1:'Dot',
-            2:'Mummification',
+map_dict = {0:'Nun',
+            1:'Metrix',
+            2:'Avengers',
             3:'Rust'
             }
 
 
 if uploaded_file is not None:
-    # Convert the file to an Rust image.
-    # file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
-    # opencv_image = cv2.imdecode(file_bytes, 1)
-    # opencv_image = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2RGB)
-    # resized = cv2.resize(opencv_image,(224,224))
+    Convert the file to an Rust image.
+    file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
+    opencv_image = cv2.imdecode(file_bytes, 1)
+    opencv_image = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2RGB)
+    resized = cv2.resize(opencv_image,(224,224))
     # Now do something with the image! For example, let's display it:
     st.video(uploaded_file)
 
 
 
-    # resized = mobilenet_v2_preprocess_input(resized)
-    # img_reshape = resized[np.newaxis,...]
+    resized = mobilenet_v2_preprocess_input(resized)
+    img_reshape = resized[np.newaxis,...]
     video_pred = st.button("Set Video")  
     if video_pred:
         cap = cv2.VideoCapture(video_name)
