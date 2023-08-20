@@ -27,6 +27,8 @@ st.set_page_config(
 st.write("""Average Movie Budget, Grouped by Genre""")
 st.write(st.session_state.year)
 st.write(st.session_state.genre)
+if st.session_state.year == '3':
+    newyear = 3
 avg_budget = movies_data.groupby('genre')['budget'].mean().round()
 avg_budget = avg_budget.reset_index()
 genre = avg_budget['genre']
@@ -55,7 +57,7 @@ with st.sidebar:
 #create a multiselect widget to display genre
 new_genre_list = st.multiselect('Choose Genre:',genre_list, default = ['Animation','Horror',  'Fantasy', 'Romance'])
 #create a selectbox option that holds all unique years
-year = st.selectbox('Choose a Year',year_list, 3)
+year = st.selectbox('Choose a Year',year_list, newyear)
 
 #Configure and filter the slider widget for interactivity
 score_info = (movies_data['score'].between(*new_score_rating))
