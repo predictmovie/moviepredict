@@ -18,7 +18,7 @@ map_dict = {0:'Nun',
 
 
 if uploaded_file is not None:
-    Convert the file to an Rust image.
+    # Convert the file to an Rust image.
     file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
     opencv_image = cv2.imdecode(file_bytes, 1)
     opencv_image = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2RGB)
