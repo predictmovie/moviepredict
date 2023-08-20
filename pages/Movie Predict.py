@@ -25,6 +25,9 @@ if uploaded_file is not None:
       opencv_image = cv2.imdecode(file_bytes, 1)
       opencv_image = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2RGB)
       resized = cv2.resize(opencv_image,(224,224))
+      st.image(opencv_image, channels="RGB")
+      resized = mobilenet_v2_preprocess_input(resized)
+      img_reshape = resized[np.newaxis,...]
     else:
     # Now do something with the image! For example, let's display it:
       st.video(uploaded_file)
