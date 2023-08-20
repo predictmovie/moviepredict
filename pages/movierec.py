@@ -17,12 +17,15 @@ movies_data.count()
 movies_data.dropna()
 
 
+
+
 st.set_page_config(
     page_title="Multipage App",
     page_icon="👋",
 )
 
 st.write("""Average Movie Budget, Grouped by Genre""")
+st.write(st.session_state)
 avg_budget = movies_data.groupby('genre')['budget'].mean().round()
 avg_budget = avg_budget.reset_index()
 genre = avg_budget['genre']
