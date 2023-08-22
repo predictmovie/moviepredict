@@ -34,8 +34,6 @@ if uploaded_file is not None:
 
 
 
-    resized = mobilenet_v2_preprocess_input(resized)
-    img_reshape = resized[np.newaxis,...]
     video_pred = st.button("Set Video")  
     if video_pred:
        vid = uploaded_file.name
