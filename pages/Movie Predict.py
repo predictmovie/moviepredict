@@ -10,7 +10,7 @@ model = tf.keras.models.load_model("saved_model/movie.hdf5")
 ### load file
 uploaded_file = st.file_uploader("Choose a file")
 st.write(uploaded_file)
-frame_skip = 1000
+frame_skip = 3
 
 map_dict = {0:'Action',
             1:'Comedy',
@@ -58,7 +58,7 @@ if uploaded_file is not None:
               print('frame: {}'.format(cur_frame)) 
               pil_img = Image.fromarray(frame) # convert opencv frame (with type()==numpy) into PIL Image
               # st.image(pil_img)
-            cur_frame += 200
+            cur_frame += 1
             img = pil_img.save("img.jpg")
               # file_bytes = np.asarray(frame, dtype=np.uint8)
        opencv_image = cv2.imread("img.jpg")
