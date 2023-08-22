@@ -57,13 +57,14 @@ if uploaded_file is not None:
             if cur_frame % frame_skip == 0: # only analyze every n=300 frames
               print('frame: {}'.format(cur_frame)) 
               pil_img = Image.fromarray(frame) # convert opencv frame (with type()==numpy) into PIL Image
-              st.image(pil_img)
+              # st.image(pil_img)
             cur_frame += 200
             img = pil_img.save("img.jpg")
               # file_bytes = np.asarray(frame, dtype=np.uint8)
        opencv_image = cv2.imread("img.jpg")
        opencv_image = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2RGB)
        resized = cv2.resize(opencv_image,(224,224))
+       st.image(opencv_image, channels="RGB")
        resized = mobilenet_v2_preprocess_input(resized)
        img_reshape = resized[np.newaxis,...]
        prediction = model.predict(img_reshape).argmax()
