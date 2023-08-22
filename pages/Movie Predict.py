@@ -59,7 +59,8 @@ if uploaded_file is not None:
               pil_img = Image.fromarray(frame) # convert opencv frame (with type()==numpy) into PIL Image
               st.image(pil_img)
               cur_frame += 1
-              # opencv_image = cv2.imdecode(frame, 1)
+              file_bytes = np.asarray(bytearray(frame.read()), dtype=np.uint8)
+              opencv_image = cv2.imdecode(frame, 1)
               opencv_image = cv2.cvtColor(pil_img, cv2.COLOR_BGR2RGB)
               resized = cv2.resize(opencv_image,(224,224))
               st.image(opencv_image, channels="RGB")
