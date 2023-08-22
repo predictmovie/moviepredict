@@ -60,10 +60,10 @@ if uploaded_file is not None:
               st.image(pil_img)
               cur_frame += 1
               # file_bytes = np.asarray(frame, dtype=np.uint8)
-              # opencv_image = cv2.imread(pil_img,1)
-              # opencv_image = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2RGB)
-              # resized = cv2.resize(opencv_image,(224,224))
-              # st.image(opencv_image, channels="RGB")
+              opencv_image = cv2.imread(frame,1)
+              opencv_image = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2RGB)
+              resized = cv2.resize(opencv_image,(224,224))
+              st.image(opencv_image, channels="RGB")
               resized = mobilenet_v2_preprocess_input(pil_img)
               img_reshape = resized[np.newaxis,...]
 
