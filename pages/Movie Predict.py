@@ -67,6 +67,12 @@ if uploaded_file is not None:
               st.image(opencv_image, channels="RGB")
               resized = mobilenet_v2_preprocess_input(resized)
               img_reshape = resized[np.newaxis,...]
+              prediction = model.predict(img_reshape).argmax()
+              st.session_state['year'] = prediction
+              st.session_state['genre'] = 'Action'
+              st.write(st.session_state.year)
+              st.title("Predicted Movie genere is {}".format(map_dict [prediction]))
+
 
 
     Genrate_pred = st.button("Genere Predict")    
