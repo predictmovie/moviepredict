@@ -52,7 +52,7 @@ if uploaded_file is not None:
        cur_frame = 0
        success = True
 
-       while success:
+       while (cur_frame<=3):
             success, frame = vidcap.read() # get next frame from video
             if cur_frame % frame_skip == 0: # only analyze every n=300 frames
               print('frame: {}'.format(cur_frame)) 
