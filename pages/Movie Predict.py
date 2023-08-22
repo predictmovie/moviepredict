@@ -38,7 +38,7 @@ if uploaded_file is not None:
     if video_pred:
        vid = uploaded_file.name
        with open(vid, mode='wb') as f:
-        f.write(uploaded_video.read()) # save video to disk
+         f.write(uploaded_file.read()) # save video to disk
 
        st.markdown(f"""
          ### Files
