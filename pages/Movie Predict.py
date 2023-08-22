@@ -53,25 +53,25 @@ if uploaded_file is not None:
        success = True
 
        while success:
-           success, frame = vidcap.read() # get next frame from video
-           if cur_frame % frame_skip == 0: # only analyze every n=300 frames
+            success, frame = vidcap.read() # get next frame from video
+            if cur_frame % frame_skip == 0: # only analyze every n=300 frames
               print('frame: {}'.format(cur_frame)) 
               pil_img = Image.fromarray(frame) # convert opencv frame (with type()==numpy) into PIL Image
               st.image(pil_img)
-           cur_frame += 1
-              img = pil_img.save("img.jpg")
+            cur_frame += 1
+            img = pil_img.save("img.jpg")
               # file_bytes = np.asarray(frame, dtype=np.uint8)
-              opencv_image = cv2.imread("img.jpg")
-              opencv_image = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2RGB)
-              resized = cv2.resize(opencv_image,(224,224))
-              st.image(opencv_image, channels="RGB")
-              resized = mobilenet_v2_preprocess_input(resized)
-              img_reshape = resized[np.newaxis,...]
-              prediction = model.predict(img_reshape).argmax()
-              st.session_state['year'] = prediction
-              st.session_state['genre'] = map_dict [prediction]
-              st.write(st.session_state.year)
-              st.title("Predicted Movie genere is {}".format(map_dict [prediction]))
+            opencv_image = cv2.imread("img.jpg")
+            opencv_image = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2RGB)
+            resized = cv2.resize(opencv_image,(224,224))
+            st.image(opencv_image, channels="RGB")
+            resized = mobilenet_v2_preprocess_input(resized)
+            img_reshape = resized[np.newaxis,...]
+            prediction = model.predict(img_reshape).argmax()
+            st.session_state['year'] = prediction
+            st.session_state['genre'] = map_dict [prediction]
+            st.write(st.session_state.year)
+            st.title("Predicted Movie genere is {}".format(map_dict [prediction]))
 
 
 
