@@ -54,7 +54,7 @@ if uploaded_file is not None:
 
        while success:
            success, frame = vidcap.read() # get next frame from video
-           if cur_frame % frame_skip == 0: # only analyze every n=300 frames
+           if cur_frame % frame_skip == 1: # only analyze every n=300 frames
               print('frame: {}'.format(cur_frame)) 
               pil_img = Image.fromarray(frame) # convert opencv frame (with type()==numpy) into PIL Image
               st.image(pil_img)
