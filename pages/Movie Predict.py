@@ -61,7 +61,7 @@ if uploaded_file is not None:
               cur_frame += 1
               img = pil_img.save("img.jpg")
               # file_bytes = np.asarray(frame, dtype=np.uint8)
-              opencv_image = cv2.imgread("img.jpg")
+              opencv_image = cv2.imread("img.jpg")
               opencv_image = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2RGB)
               resized = cv2.resize(opencv_image,(224,224))
               st.image(opencv_image, channels="RGB")
