@@ -10,7 +10,7 @@ model = tf.keras.models.load_model("saved_model/movie.hdf5")
 ### load file
 uploaded_file = st.file_uploader("Choose a file")
 st.write(uploaded_file)
-frame_skip = 5
+frame_skip = 3
 
 map_dict = {0:'Action',
             1:'Comedy',
@@ -58,13 +58,12 @@ if uploaded_file is not None:
               print('frame: {}'.format(cur_frame)) 
               pil_img = Image.fromarray(frame) # convert opencv frame (with type()==numpy) into PIL Image
               st.image(pil_img)
-            cur_frame += 5
+            cur_frame += 1
             img = pil_img.save("img.jpg")
               # file_bytes = np.asarray(frame, dtype=np.uint8)
             opencv_image = cv2.imread("img.jpg")
             opencv_image = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2RGB)
             resized = cv2.resize(opencv_image,(224,224))
-            st.image(opencv_image, channels="RGB")
             resized = mobilenet_v2_preprocess_input(resized)
             img_reshape = resized[np.newaxis,...]
             prediction = model.predict(img_reshape).argmax()
