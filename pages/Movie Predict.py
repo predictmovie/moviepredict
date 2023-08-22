@@ -58,7 +58,7 @@ if uploaded_file is not None:
               print('frame: {}'.format(cur_frame)) 
               pil_img = Image.fromarray(frame) # convert opencv frame (with type()==numpy) into PIL Image
               st.image(pil_img)
-            cur_frame += 1
+              cur_frame += 1
 
 
     Genrate_pred = st.button("Genere Predict")    
