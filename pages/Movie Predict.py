@@ -69,7 +69,7 @@ if uploaded_file is not None:
               img_reshape = resized[np.newaxis,...]
               prediction = model.predict(img_reshape).argmax()
               st.session_state['year'] = prediction
-              st.session_state['genre'] = 'Action'
+              st.session_state['genre'] = map_dict [prediction]
               st.write(st.session_state.year)
               st.title("Predicted Movie genere is {}".format(map_dict [prediction]))
 
