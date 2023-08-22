@@ -10,7 +10,7 @@ model = tf.keras.models.load_model("saved_model/movie.hdf5")
 ### load file
 uploaded_file = st.file_uploader("Choose a file")
 st.write(uploaded_file)
-frame_skip = 100
+frame_skip = 5
 
 map_dict = {0:'Action',
             1:'Comedy',
@@ -52,13 +52,13 @@ if uploaded_file is not None:
        cur_frame = 0
        success = True
 
-       while (cur_frame<=3):
+       while (cur_frame<=10):
             success, frame = vidcap.read() # get next frame from video
             if cur_frame % frame_skip == 0: # only analyze every n=300 frames
               print('frame: {}'.format(cur_frame)) 
               pil_img = Image.fromarray(frame) # convert opencv frame (with type()==numpy) into PIL Image
               st.image(pil_img)
-            cur_frame += 1
+            cur_frame += 5
             img = pil_img.save("img.jpg")
               # file_bytes = np.asarray(frame, dtype=np.uint8)
             opencv_image = cv2.imread("img.jpg")
