@@ -10,7 +10,7 @@ model = tf.keras.models.load_model("saved_model/movie.hdf5")
 ### load file
 uploaded_file = st.file_uploader("Choose a file")
 st.write(uploaded_file)
-frame_skip = 10000
+frame_skip = 3
 
 map_dict = {0:'Action',
             1:'Comedy',
