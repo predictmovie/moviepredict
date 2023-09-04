@@ -15,7 +15,7 @@ frame_skip = 3
 map_dict = {0:'Action',
             1:'Comedy',
             2:'Fantacy',
-            3:'Horror'
+            3:'Action'
             }
 
 
