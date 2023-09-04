@@ -13,9 +13,11 @@ st.write(uploaded_file)
 frame_skip = 3
 
 map_dict = {0:'Action',
-            1:'Comedy',
+            1:'Animation',
             2:'Fantacy',
-            3:'Action'
+            3:'Romance',
+            4:'war',
+            5:'None'
             }
 
 
