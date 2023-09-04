@@ -49,7 +49,7 @@ if uploaded_file is not None:
          - {vid}
          """,
        unsafe_allow_html=True) # display file name
-
+       st.session_state['name'] = vid
        vidcap = cv2.VideoCapture(vid) # load video from disk
        cur_frame = 0
        success = True
