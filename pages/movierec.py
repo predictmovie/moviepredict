@@ -70,7 +70,9 @@ col1, col2 = st.columns([2,3])
 with col1:
     st.write("""#### Lists of movies filtered by year and Genre """)
     st.write("""#### Suggested Name """)
-    st.write(st.session_state.name)
+    name = st.session_state.name
+    first_chars = name[0:10]
+    st.write(first_chars)
     dataframe_genre_year = movies_data[new_genre_year].groupby(['name',  'genre'])['year'].sum()
     dataframe_genre_year = dataframe_genre_year.reset_index()
     st.dataframe(dataframe_genre_year, width = 400)
