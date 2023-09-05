@@ -16,7 +16,7 @@ map_dict = {0:'Action',
             1:'Animation',
             2:'Fantacy',
             3:'Action',
-            4:'Action',
+            4:'Animation',
             5:'None'
             }
 
