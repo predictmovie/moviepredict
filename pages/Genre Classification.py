@@ -83,6 +83,7 @@ if uploaded_file is not None:
         st.session_state['year'] = prediction
         st.session_state['genre'] = 'Action'
         st.write(st.session_state.year)
+        st.title(prediction)
         st.title("Predicted Movie genere is {}".format(map_dict [prediction]))
  
            
