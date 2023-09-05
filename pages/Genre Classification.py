@@ -12,7 +12,7 @@ uploaded_file = st.file_uploader("Choose a file")
 st.write(uploaded_file)
 frame_skip = 3
 
-map_dict = {0:'Action',
+map_dict = {0:'Romance',
             1:'Animation',
             2:'Fantacy',
             3:'Action',
